@@ -46,6 +46,10 @@ public class User {
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     private Set<Role> roles;
 	
+	/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Counter.class)
+	@JoinTable(name = "user_counter", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "counter_id") })
+	private Set<Counter> counters;	
+*/
 	public User(){	}
 	
 	public User(String firstname, String lastname, String password, String email, boolean enabled,
@@ -122,7 +126,14 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
+   
+    /*public Set<Counter> getCounters() {
+		return counters;
+	}
+
+	public void setCounters(Set<Counter> counters) {
+		this.counters = counters;
+	}*/
     
 
 	@Override

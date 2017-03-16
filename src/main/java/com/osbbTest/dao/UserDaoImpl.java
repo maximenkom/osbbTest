@@ -1,9 +1,12 @@
 package com.osbbTest.dao;
 
 import java.util.List;
+import java.util.Set;
+
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.osbbTest.model.Counter;
 import com.osbbTest.model.User;
 
 

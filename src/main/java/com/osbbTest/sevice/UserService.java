@@ -11,9 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.osbbTest.dao.CounterDao;
 import com.osbbTest.dao.HouseDao;
 import com.osbbTest.dao.UserDao;
 import com.osbbTest.dto.UserDTO;
+import com.osbbTest.model.Counter;
 import com.osbbTest.model.House;
 import com.osbbTest.model.Role;
 import com.osbbTest.model.User;
@@ -32,6 +34,9 @@ public class UserService {
 	
 	@Autowired
 	private HouseDao houseDao;
+	
+	@Autowired
+	private CounterDao counterDao;
 
 	public void addUserDTO(UserDTO userDTO) {
 		User user = new User(userDTO.getFirstname(), userDTO.getLastname(), userDTO.getPassword(), userDTO.getEmail(), userDTO.isEnabled(), userDTO.getRoomNumber());
@@ -71,5 +76,8 @@ public class UserService {
 	
 	public List<User> getHouseUsers(Long houseId) {
 		return	userDao.getAllByHouseId(houseId);
+	}
+	public List<Counter> getUserCountersByID(Long id) {
+		return counterDao.getCountersByUsersId(id);
 	}
 }
